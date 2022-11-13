@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row mt-4">
+        <h1>Daftar Contacts</h1>
+        <div class="col-md-12">
+            <a href="/contact/create" class="btn btn-primary">Tambah Data</a>
+            <br></br>
+            <% if (msg.length !== 0) { %>
+                <div class="alert alert-success" role="alert">
+                    <%= msg %> 
+                </div>                  
+            <% } %>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">No Hp</th>
+                    <th scope="col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% let no = 1 %> 
+                    <% load.forEach(x => { %>
+                        <tr>
+                            <th scope="row"><%= no++ %> </th>
+                            <td><%= x.nama %> </td>
+                            <td><%= x.nohp %> </td>
+                            <td>
+                                <a href="/contact/edit/<%= x.nama %>" class="btn badge text-bg-info">Ubah</a>
+                                <a href="/contact/<%= x.nama %>" class="btn badge text-bg-warning">Details</a>
+                                <a href="/contact/delete/<%= x.nama %>" class="btn badge text-bg-danger" onclick="return confirm('Yakin Mau Dihapus ?')">Hapus</a>
+                            </td>
+                          </tr>                         
+                    <% }) %>
+                </tbody>
+              </table>    
+        </div>
+    </div>
+</div>
